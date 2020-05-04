@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+$main-theme-color:#232931;
+$main-theme-secondary:#393e46;
+$main-theme-title:#4ecca3;
+$main-theme-light:#eeeeee;
+
+$main-font:'Open Sans', sans-serif;
+
+body{
+ background-color:$main-theme-color;
+ font-family: $main-font;
+}
