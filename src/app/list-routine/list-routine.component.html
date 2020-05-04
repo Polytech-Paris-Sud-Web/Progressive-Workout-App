@@ -1,10 +1,9 @@
 <div id="listRoutineTopBar">   
-    <form [formGroup]="searchForm" (ngSubmit)="formOnChanges()">
-        <div class="form-group" id="searchMenu">
-            <input class="form-control" id="searchBar" type="text" placeholder="Search" aria-label="Search"
-                formControlName="search">
-        </div>
-    </form>
+    <div id="searchMenu"  class="form-group">
+            <input  id="searchBar" type="text"  class="form-control"
+            placeholder="Search in your routines...." aria-label="Search"
+             (input)="updateRoutines($event.target.value)" >
+    </div>
     <button class="btn btn-success">+</button>
 </div>
 
