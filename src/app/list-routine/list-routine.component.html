@@ -1,0 +1,15 @@
+<div id="listRoutineTopBar">   
+    <form [formGroup]="searchForm" (ngSubmit)="formOnChanges()">
+        <div class="form-group" id="searchMenu">
+            <input class="form-control" id="searchBar" type="text" placeholder="Search" aria-label="Search"
+                formControlName="search">
+        </div>
+    </form>
+    <button class="btn btn-success">+</button>
+</div>
+
+<div id="listRoutine">
+    <div *ngFor="let routine of _routines">
+        <div class="oneRoutine align-middle">{{routine.titre}}</div>
+    </div>
+</div>

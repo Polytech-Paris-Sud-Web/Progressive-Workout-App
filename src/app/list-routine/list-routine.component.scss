@@ -1,0 +1,46 @@
+@import "../../styles.scss";
+
+
+#listRoutine{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .oneRoutine{
+        width: 85%;
+        height: 50px;
+        background-color: $main-theme-title;
+        margin: 10px auto 10px auto;
+        border-radius: 5px;
+        padding: 5px;
+        padding-top:12px;
+        text-align: center;
+    }
+}
+
+#listRoutineTopBar{
+
+    display: flex;
+    justify-content: space-betweens;
+    margin:auto;
+    background-color: $main-theme-color;
+    padding: 5px;
+    border-bottom: 2px solid $main-theme-secondary;
+
+    form{
+        flex:2;
+        margin-right: 15px;
+        margin-bottom: -10px;
+        
+        input{background-color: darkgray;}
+    }
+
+    button{
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        font-weight: bolder;
+    }
+}
+
