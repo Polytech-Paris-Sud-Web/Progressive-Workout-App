@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -11,8 +10,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CreateRoutineComponent } from './create-routine/create-routine.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { RouterModule, Routes } from '@angular/router';
-
+import {PwaService} from './services/pwa/pwa.service';
 
 @NgModule({
   declarations: [
@@ -28,9 +26,14 @@ import { RouterModule, Routes } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    PwaService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import * as data from '../../../db.json';
 import { Routine } from '../models/routine.interface';
+import {LocalDBService} from '../services/localDB/local-db.service';
+import {Routine} from '../models/routine.interface';
 
 @Component({
   selector: 'app-list-routine',
@@ -9,37 +10,20 @@ import { Routine } from '../models/routine.interface';
 })
 export class ListRoutineComponent implements OnInit {
 
-  _routines : Routine[];
-  _all_routines: Routine[];
+  public routines: Routine[];
+  public allRoutines: Routine[];
+
+  constructor(
+    private localdb: LocalDBService
+  ) {this.allRoutines = this.localdb.getAllWorkouts();}
+
 
   /**
    * @description Update the routines list.
    */
   updateRoutines(value: string ): void {
-
-    if ((data as any).default === undefined) {
-      this._all_routines = data;
-    }
-
-    else {
-      this._all_routines = (data as any).default;
-    }
-
-
-    // Filter results
-    if (value !== undefined){
-      this._routines = this._all_routines.filter(
-        (customRoutine) => customRoutine.name.toLowerCase().match(value.toLowerCase())
-      );
-    }
-    // No filter required
-    else {
-      this._routines = this._all_routines;
-    }
+    this.routines = this.allRoutines.filter(w => w.name.toLowerCase().match(value.toLowerCase()));
   }
-
-  constructor() { }
-
 
    /**
     * @description Module initialisation.
