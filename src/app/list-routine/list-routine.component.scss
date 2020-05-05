@@ -10,12 +10,21 @@
     .oneRoutine{
         width: 85%;
         height: 50px;
-        background-color: $main-theme-title;
+
+        background : $main-theme-degrade;
+        border-radius: 10px 0 10px 0;
+        
         margin: 10px auto 10px auto;
-        border-radius: 5px;
+
         padding: 5px;
         padding-top:12px;
+
         text-align: center;
+        font-size : 18px;
+        font-weight: 300;
+        font-variant: small-caps;
+        color:$main-theme-light;
+
     }
 }
 
@@ -41,6 +50,8 @@
         height: 50px;
         font-size: 20px;
         font-weight: bolder;
+        background:$main-theme-degrade;
+        color:$main-theme-light;
     }
 }
 
