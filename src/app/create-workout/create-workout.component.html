@@ -1,10 +1,10 @@
-<form class="form" [formGroup]="routineForm" (ngSubmit)="createWorkout()">
+<form class="form" [formGroup]="workoutForm" (ngSubmit)="createWorkout()">
   <div class="input-group mb-3">
     <input type="text" class="form-control" placeholder="Workout name" formControlName="name">
   </div>
   <div class="groups" formArrayName="exercises">
     <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
-      <ngb-panel id="custom-panel-{{i}}"  class="routineGroup" *ngFor="let group of groups.controls; let i=index">
+      <ngb-panel id="custom-panel-{{i}}" class="workoutGroup" *ngFor="let group of groups.controls; let i=index">
         <ng-container [formGroupName]="i">
           <ng-template ngbPanelHeader let-opened="opened">
             <div class="d-flex align-items-center justify-content-between">
@@ -74,5 +74,5 @@
     </ngb-accordion>
   </div>
 
-  <button class="btn btn-success"  type="submit" [disabled]="!routineForm.valid">Create workout</button>
+  <button class="btn btn-success"  type="submit" [disabled]="!workoutForm.valid">Create workout</button>
 </form>

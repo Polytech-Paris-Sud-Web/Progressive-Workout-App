@@ -1,6 +1,6 @@
 @import "../../styles.scss";
 
-#routineCompo{
+#workoutCompo{
 
     padding: 15px;
     margin: 15px;
@@ -8,12 +8,12 @@
     background-color: $main-theme-secondary;
     border-radius: 5px;
 
-    #routine_header{
+    #workoutHeader{
         border-bottom: 2px dashed $main-theme-light;
         margin-bottom: 10px;
         display: flex;
         justify-content: space-between;
-        
+
         color:$main-theme-title;
 
         fa-icon{

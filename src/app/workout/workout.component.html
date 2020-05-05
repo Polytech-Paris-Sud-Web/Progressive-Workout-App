@@ -1,15 +1,15 @@
-<div id="routineCompo">
-    <div id="routine_header">
-        <h3>{{this.routine.name}}</h3>
+<div id="workoutCompo">
+    <div id="workoutHeader">
+        <h3>{{this.workout.name}}</h3>
         <fa-icon [icon]="faArrow"></fa-icon>
     </div>
-    <div id="routine_body">
+    <div id="workoutBody">
 
-        <ngb-accordion *ngFor="let groupExercice of routine.exercises" class="groupEx">
-            <ngb-panel title="{{groupExercice.name}}">
+        <ngb-accordion *ngFor="let groupExercise of workout.groups" class="groupEx">
+            <ngb-panel title="{{groupExercise.name}}">
                 <ng-template ngbPanelContent>
-                    
-                    <div class="oneExercise" *ngFor="let exercise of groupExercice.exercises">
+
+                    <div class="oneExercise" *ngFor="let exercise of groupExercise.exercises">
                         <div>
                             <div class="exerciceRepeat">{{exercise.nbOfReps}}</div>
                             <div class="exerciceName">{{exercise.name}}</div>

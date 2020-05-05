@@ -1,7 +1,7 @@
 @import "../../styles.scss";
 
 
-#listRoutine{
+#listWorkout{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,13 +9,13 @@
 
     a{text-decoration: none;}
 
-    .oneRoutine{
+    .oneWorkout{
         width: 85%;
         height: 50px;
 
         background : $main-theme-degrade;
         border-radius: 10px 0 10px 0;
-        
+
         margin: 10px auto 10px auto;
 
         padding: 5px;
@@ -30,7 +30,7 @@
     }
 }
 
-#listRoutineTopBar{
+#listWorkoutTopBar{
 
     display: flex;
     justify-content: space-between;

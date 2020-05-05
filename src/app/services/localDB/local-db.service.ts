@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Routine } from '../../models/routine.interface';
+import { Workout } from '../../models/workout.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +11,8 @@ export class LocalDBService {
     return JSON.parse(localStorage.getItem('workouts'));
   }
 
-  public addWorkout(workout: Routine) {
-    let workouts: Routine[] = this.getAllWorkouts();
+  public addWorkout(workout: Workout) {
+    let workouts: Workout[] = this.getAllWorkouts();
     if (workouts) {
       workouts.push(workout);
     } else {
@@ -25,5 +25,5 @@ export class LocalDBService {
   public getWorkout(workoutId: string) {}
 
   // TODO update
-  public updateWorkout(workoutID: string, workout: Routine) {}
+  public updateWorkout(workoutID: string, workout: Workout) {}
 }

@@ -1,0 +1,16 @@
+<div id="listWorkoutTopBar">
+    <div id="searchMenu"  class="form-group">
+            <input  id="searchBar" type="text"  class="form-control"
+            placeholder="Search in your workouts...." aria-label="Search"
+             (input)="filterWorkouts($event.target.value)" >
+    </div>
+    <a routerLink="create-workout"> <button class="btn">+</button> </a>
+</div>
+
+<div id="listWorkout">
+    <div *ngFor="let workout of displayWorkouts">
+        <a routerLink="/workout/{{workout.id}}" routerLinkActive="active">
+            <div class="oneWorkout align-middle">{{workout.name}}</div>
+        </a>
+    </div>
+</div>

@@ -3,24 +3,24 @@ import * as data from '../../../db.json';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { faArrowCircleRight, faStopwatch, faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
-import { Routine } from '../models/routine.interface';
+import { Workout } from '../models/workout.interface';
 
 @Component({
-  selector: 'app-routine',
-  templateUrl: './routine.component.html',
-  styleUrls: ['./routine.component.scss'],
+  selector: 'app-workout',
+  templateUrl: './workout.component.html',
+  styleUrls: ['./workout.component.scss'],
 })
-export class RoutineComponent implements OnInit {
+export class WorkoutComponent implements OnInit {
   //Icons
   faArrow = faArrowCircleRight;
   faWatch = faStopwatch;
   faHourGlass = faHourglassHalf;
 
-  routine: Routine;
+  workout: Workout;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.routine = (data as any).default[this.route.snapshot.params.id - 1]; //@TO REPLACE
+    this.workout = (data as any).default[this.route.snapshot.params.id - 1]; //@TO REPLACE
   }
 }

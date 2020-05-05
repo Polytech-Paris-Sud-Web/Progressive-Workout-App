@@ -3,17 +3,17 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RoutineComponent } from './routine/routine.component';
-import { ListRoutineComponent } from './list-routine/list-routine.component';
+import { WorkoutComponent } from './workout/workout.component';
+import { ListWorkoutComponent } from './list-workout/list-workout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { CreateRoutineComponent } from './create-routine/create-routine.component';
+import { CreateWorkoutComponent } from './create-workout/create-workout.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PwaService } from './services/pwa/pwa.service';
 
 @NgModule({
-  declarations: [AppComponent, RoutineComponent, ListRoutineComponent, CreateRoutineComponent],
+  declarations: [AppComponent, WorkoutComponent, ListWorkoutComponent, CreateWorkoutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
