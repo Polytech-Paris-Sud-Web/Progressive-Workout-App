@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import * as data from '../../../db.json';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
+import { faArrowCircleRight,faStopwatch, faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
+import { Routine } from '../models/routine.interface';
+
 
 @Component({
   selector: 'app-routine',
@@ -10,17 +13,65 @@ import { Observable } from 'rxjs';
 })
 export class RoutineComponent implements OnInit {
 
-  @Input()
-  id_routine;
+  //Icons
+  faArrow = faArrowCircleRight;
+  faWatch = faStopwatch;
+  faHourGlass = faHourglassHalf;
 
-  routine;
+  routine : Routine;
 
-    constructor(private route : ActivatedRoute) {
-    }
+    constructor(private route : ActivatedRoute) {}
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.params.id);
-    this.routine = (data as any).default[this.route.snapshot.params.id - 1]; //@TO REPLACE
+    this.routine = exampleRoutine;
+    this.routine.name = (data as any).default[this.route.snapshot.params.id - 1].name; //@TO REPLACE
   }
 
 }
+
+//MOCKER -> A enlever !
+let exampleRoutine = {
+  name: 'testRoutine',
+  exercises: [
+    {
+      name: 'Début',
+      exercises: [
+        {
+          name: 'push ups',
+          nbOfReps: 12,
+          restAfterExercise: 45
+        },
+        {
+          name: 'pull ups',
+          nbOfReps: 12,
+          restAfterExercise: 45
+        },
+        {
+          name: 'squats',
+          nbOfReps: 12,
+          restAfterExercise: 45
+        }
+      ]
+    },
+    {
+      name: 'Milieu',
+      exercises: [
+        {
+          name: 'push ups',
+          nbOfReps: 12,
+          restAfterExercise: 45
+        },
+        {
+          name: 'pull ups',
+          nbOfReps: 12,
+          restAfterExercise: 45
+        },
+        {
+          name: 'squats',
+          nbOfReps: 12,
+          restAfterExercise: 45
+        }
+      ]
+    }
+  ]
+};

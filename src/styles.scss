@@ -3,6 +3,7 @@
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Geo&display=swap');
 
 $main-theme-color:#232931;
 $main-theme-secondary:#393e46;
@@ -14,6 +15,7 @@ $background-degrade : linear-gradient($main-theme-color,$main-theme-secondary);
 $main-theme-light:#eeeeee;
 
 $main-font:'Open Sans', sans-serif;
+$number-font : 'Audiowide', cursive;
 
 html,body{
  background: $background-degrade;

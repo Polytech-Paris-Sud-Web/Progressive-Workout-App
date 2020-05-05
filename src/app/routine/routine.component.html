@@ -1,15 +1,32 @@
 <div id="routineCompo">
-<div class="routine_header">
-    <h3>{{this.routine.name}}</h3>
-    <div>
-        <div class="routine_body">
-            Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est
-            in quo
-            admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e
-            Graecis
-            expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam
-            Pacuvii
-            spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?
-        </div>
+    <div id="routine_header">
+        <h3>{{this.routine.name}}</h3>
+        <fa-icon [icon]="faArrow"></fa-icon>
+    </div>
+    <div id="routine_body">
+
+        <ngb-accordion *ngFor="let groupExercice of routine.exercises" class="groupEx">
+            <ngb-panel title="{{groupExercice.name}}">
+                <ng-template ngbPanelContent>
+                    
+                    <div class="oneExercise" *ngFor="let exercise of groupExercice.exercises">
+                        <div>
+                            <div class="exerciceRepeat">{{exercise.nbOfReps}}</div>
+                            <div class="exerciceName">{{exercise.name}}</div>
+                        </div>
+                        <div>
+                            <fa-icon [icon]="faHourGlass"></fa-icon>
+                            <div class="exerciceRest">{{exercise.restAfterExercise}}</div>
+                        </div>
+
+                    </div>
+
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
+
+    </div>
 </div>
 
+
+<fa-icon [icon]="faArrow"  class="float-launch"></fa-icon>
