@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faTrashAlt, faPlus } from '@fortawesome/free-solid-svg-icons';
 import * as exercisesJson from '../../assets/exercises.json';
-import {Exercise} from '../models/exercise';
-import {LocalDBService} from '../services/localDB/local-db.service';
-import {Routine} from '../models/routine.interface';
+import { Exercise } from '../models/exercise';
+import { LocalDBService } from '../services/localDB/local-db.service';
+import { Routine } from '../models/routine.interface';
 
 @Component({
   selector: 'app-create-routine',
   templateUrl: './create-routine.component.html',
-  styleUrls: ['./create-routine.component.scss']
+  styleUrls: ['./create-routine.component.scss'],
 })
 export class CreateRoutineComponent {
   public deleteIcon = faTrashAlt;
@@ -17,18 +17,15 @@ export class CreateRoutineComponent {
   public routineForm: FormGroup;
   public exercises: Exercise[] = (exercisesJson as any).default;
 
-  constructor(
-    private fb: FormBuilder,
-    private localdb: LocalDBService
-  ) {
+  constructor(private fb: FormBuilder, private localdb: LocalDBService) {
     this.routineForm = this.fb.group({
       name: ['', Validators.required],
-      exercises: this.fb.array([this.newGroup()])
+      exercises: this.fb.array([this.newGroup()]),
     });
   }
 
   public createWorkout() {
-    const newWorkout: Routine = {...this.routineForm.value};
+    const newWorkout: Routine = { ...this.routineForm.value };
     this.localdb.addWorkout(newWorkout);
   }
 
@@ -59,7 +56,7 @@ export class CreateRoutineComponent {
   private newGroup() {
     return this.fb.group({
       name: ['New group', Validators.required],
-      exercises: this.fb.array([this.newExercise()])
+      exercises: this.fb.array([this.newExercise()]),
     });
   }
 
@@ -67,8 +64,7 @@ export class CreateRoutineComponent {
     return this.fb.group({
       name: ['', Validators.required],
       nbOfReps: ['', Validators.required],
-      restAfterExercise: ['', Validators.required]
+      restAfterExercise: ['', Validators.required],
     });
   }
-
 }

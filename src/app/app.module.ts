@@ -10,15 +10,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CreateRoutineComponent } from './create-routine/create-routine.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {PwaService} from './services/pwa/pwa.service';
+import { PwaService } from './services/pwa/pwa.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RoutineComponent,
-    ListRoutineComponent,
-    CreateRoutineComponent
-  ],
+  declarations: [AppComponent, RoutineComponent, ListRoutineComponent, CreateRoutineComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,13 +22,9 @@ import {PwaService} from './services/pwa/pwa.service';
     ReactiveFormsModule,
     FontAwesomeModule,
 
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
-  providers: [
-    PwaService
-  ],
-  bootstrap: [
-    AppComponent
-  ]
+  providers: [PwaService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

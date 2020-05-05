@@ -1,4 +1,4 @@
-import {RoutineExercise} from './routine-exercise';
+import { RoutineExercise } from './routine-exercise';
 
 export interface RoutineExerciseGroup {
   name: string;
