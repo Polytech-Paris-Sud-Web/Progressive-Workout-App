@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Routine } from '../models/routine.interface';
 import {LocalDBService} from '../services/localDB/local-db.service';
-import {Routine} from '../models/routine.interface';
 
 @Component({
   selector: 'app-list-routine',
