@@ -9,6 +9,8 @@
 
 <div id="listRoutine">
     <div *ngFor="let routine of _routines">
-        <div class="oneRoutine align-middle">{{routine.titre}}</div>
+        <a routerLink="/routine/{{routine.id}}"  routerLinkActive="active">
+            <div class="oneRoutine align-middle">{{routine.name}}</div>
+        </a>
     </div>
 </div>

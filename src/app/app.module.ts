@@ -7,6 +7,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoutineComponent } from './routine/routine.component';
 import { ListRoutineComponent } from './list-routine/list-routine.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+
 
 
 @NgModule({
