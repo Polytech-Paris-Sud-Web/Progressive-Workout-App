@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as data from '../../../db.json';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { faArrowCircleRight, faStopwatch, faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
 import { Workout } from '../models/workout.interface';
 
@@ -11,7 +10,7 @@ import { Workout } from '../models/workout.interface';
   styleUrls: ['./workout.component.scss'],
 })
 export class WorkoutComponent implements OnInit {
-  //Icons
+  // Icons
   faArrow = faArrowCircleRight;
   faWatch = faStopwatch;
   faHourGlass = faHourglassHalf;
@@ -21,6 +20,6 @@ export class WorkoutComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.workout = (data as any).default[this.route.snapshot.params.id - 1]; //@TO REPLACE
+    this.workout = (data as any).default[this.route.snapshot.params.id - 1]; // @TO REPLACE
   }
 }

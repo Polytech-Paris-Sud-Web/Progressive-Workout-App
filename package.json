@@ -9,8 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format": "prettier --write \"src/**/*.ts\"",
-    "format:fix": "pretty-quick --staged",
-    "precommit": "run-s format:fix lint"
+    "format:fix": "pretty-quick --staged"
   },
   "private": true,
   "dependencies": {
@@ -60,5 +59,10 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "run-s format:fix lint"
+    }
   }
 }
