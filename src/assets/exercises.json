@@ -1,0 +1,102 @@
+[
+  {
+    "name":"Standard pull ups",
+    "difficulty":"medium"
+  },
+  {
+    "name":"Archer pull ups",
+    "difficulty":"hard"
+  },
+  {
+    "name":"Commando Pull ups",
+    "difficulty":"hard"
+  },
+  {
+    "name":"L-sit pull ups",
+    "difficulty":"hard"
+  },
+  {
+    "name":"Negative Pull ups",
+    "difficulty":"easy"
+  },
+  {
+    "name":"One arm pull ups",
+    "difficulty":"hard"
+  },
+  {
+    "name":"Knee push ups",
+    "difficulty":"easy"
+  },
+  {
+    "name":"Standard push ups",
+    "difficulty":"medium"
+  },
+  {
+    "name":"Diamond push ups",
+    "difficulty":"hard"
+  },
+  {
+    "name":"Wide push ups",
+    "difficulty":"hard"
+  },
+  {
+    "name":"Parallel bar dips",
+    "difficulty":"medium"
+  },
+  {
+    "name":"Ring dips",
+    "difficulty":"hard"
+  },
+  {
+    "name":"Pike push up",
+    "difficulty":"medium"
+  },
+  {
+    "name":"Elevated pike push up",
+    "difficulty":"hard"
+  },
+  {
+    "name":"Wall handstand push up",
+    "difficulty":"hard"
+  },
+  {
+    "name":"Freestanding handstand push up",
+    "difficulty":"hard"
+  },
+  {
+    "name":"Tuck L-sit",
+    "difficulty":"medium"
+  },
+  {
+    "name":"L-sit",
+    "difficulty":"medium"
+  },
+  {
+    "name":"Straddle L-sit",
+    "difficulty":"hard"
+  },
+  {
+    "name":"V-sit",
+    "difficulty":"hard"
+  },
+  {
+    "name":"Standard squat",
+    "difficulty":"easy"
+  },
+  {
+    "name":"Side to side squat",
+    "difficulty":"medium"
+  },
+  {
+    "name":"Pistol squats",
+    "difficulty":""
+  },
+  {
+    "name":"Weighted pistol squats",
+    "difficulty":"hard"
+  },
+  {
+    "name":"Bulgarian split squat",
+    "difficulty":"medium"
+  }
+]

@@ -7,20 +7,26 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoutineComponent } from './routine/routine.component';
 import { ListRoutineComponent } from './list-routine/list-routine.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { CreateRoutineComponent } from './create-routine/create-routine.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutineComponent,
-    ListRoutineComponent
+    ListRoutineComponent,
+    CreateRoutineComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
