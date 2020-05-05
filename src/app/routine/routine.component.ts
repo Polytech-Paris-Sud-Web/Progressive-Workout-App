@@ -15,12 +15,12 @@ export class RoutineComponent implements OnInit {
 
   routine;
 
-    constructor(private route : ActivatedRoute) { 
+    constructor(private route : ActivatedRoute) {
     }
 
   ngOnInit(): void {
     console.log(this.route.snapshot.params.id);
-    this.routine = data.default[this.route.snapshot.params.id-1]; //@TO REPLACE
+    this.routine = (data as any).default[this.route.snapshot.params.id - 1]; //@TO REPLACE
   }
 
 }

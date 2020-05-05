@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {Form, FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Routine} from '../models/routine.interface';
+import { Component } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faTrashAlt, faPlus } from '@fortawesome/free-solid-svg-icons';
+import * as exercisesJson from '../../assets/exercises.json';
+import {Exercise} from '../models/exercise';
+
 @Component({
   selector: 'app-create-routine',
   templateUrl: './create-routine.component.html',
@@ -11,69 +13,27 @@ export class CreateRoutineComponent {
   public deleteIcon = faTrashAlt;
   public addIcon = faPlus;
   public routineForm: FormGroup;
-
-  public routineTest: Routine = {
-    name: 'testRoutine',
-    exercises: [
-      {
-        name: 'group1',
-        exercises: [
-          {
-            name: 'push ups',
-            nbOfReps: 12,
-            restAfterExercise : 45
-          },
-          {
-            name: 'pull ups',
-            nbOfReps: 12,
-            restAfterExercise : 45
-          },
-          {
-            name: 'squats',
-            nbOfReps: 12,
-            restAfterExercise : 45
-          }
-        ]
-      },
-      {
-        name: 'group2',
-        exercises: [
-          {
-            name: 'push ups',
-            nbOfReps: 12,
-            restAfterExercise : 45
-          },
-          {
-            name: 'pull ups',
-            nbOfReps: 12,
-            restAfterExercise : 45
-          },
-          {
-            name: 'squats',
-            nbOfReps: 12,
-            restAfterExercise : 45
-          }
-        ]
-      }
-    ]
-  };
+  public exercises: Exercise[] = (exercisesJson as any).default;
 
   constructor(
     private fb: FormBuilder
   ) {
     this.routineForm = this.fb.group({
-      name: '',
-      exercises: this.fb.array([])
+      name: ['', Validators.required],
+      exercises: this.fb.array([this.newGroup()])
     });
+  }
+
+  public createWorkout() {
+    // TODO save workout
+    console.log(this.routineForm.value);
   }
 
   get groups() {
     return this.routineForm.get('exercises') as FormArray;
   }
 
-
   public addGroup() {
-    console.log(this.groups);
     this.groups.push(this.newGroup());
   }
 
@@ -82,9 +42,10 @@ export class CreateRoutineComponent {
   }
 
   public deleteExercise(groupId: number, exerciseId: number) {
-    const group = this.routineForm.controls.exercises[groupId] as FormGroup;
-    const GroupExercises = group.controls.exercises as FormArray;
-    GroupExercises.removeAt(exerciseId);
+    const groups = this.routineForm.controls.exercises as FormArray;
+    const group = groups.at(groupId) as FormGroup;
+    const groupExercises = group.controls.exercises as FormArray;
+    groupExercises.removeAt(exerciseId);
   }
 
   public deleteGroup(i: number) {
@@ -94,16 +55,16 @@ export class CreateRoutineComponent {
 
   private newGroup() {
     return this.fb.group({
-      name: 'New group',
-      exercises: this.fb.array([])
+      name: ['New group', Validators.required],
+      exercises: this.fb.array([this.newExercise()])
     });
   }
 
   private newExercise() {
     return this.fb.group({
-      name: '',
-      nbOfReps: '',
-      restAfterExercise: ''
+      name: ['', Validators.required],
+      nbOfReps: ['', Validators.required],
+      restAfterExercise: ['', Validators.required]
     });
   }
 
