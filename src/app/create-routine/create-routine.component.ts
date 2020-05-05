@@ -3,6 +3,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faTrashAlt, faPlus } from '@fortawesome/free-solid-svg-icons';
 import * as exercisesJson from '../../assets/exercises.json';
 import {Exercise} from '../models/exercise';
+import {LocalDBService} from '../services/localDB/local-db.service';
+import {Routine} from '../models/routine.interface';
 
 @Component({
   selector: 'app-create-routine',
@@ -16,7 +18,8 @@ export class CreateRoutineComponent {
   public exercises: Exercise[] = (exercisesJson as any).default;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private localdb: LocalDBService
   ) {
     this.routineForm = this.fb.group({
       name: ['', Validators.required],
@@ -25,8 +28,8 @@ export class CreateRoutineComponent {
   }
 
   public createWorkout() {
-    // TODO save workout
-    console.log(this.routineForm.value);
+    const newWorkout: Routine = {...this.routineForm.value};
+    this.localdb.addWorkout(newWorkout);
   }
 
   get groups() {
