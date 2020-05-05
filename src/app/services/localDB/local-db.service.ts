@@ -1,29 +1,57 @@
 import { Injectable } from '@angular/core';
-import { Workout } from '../../models/workout.interface';
+import { Workout, WorkoutDB } from '../../models/workout.interface';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalDBService {
-  constructor() {}
+  public clearAllWorkouts() {
+    localStorage.setItem('workouts', JSON.stringify([]));
+  }
 
-  public getAllWorkouts() {
+  public getAllWorkouts(): WorkoutDB[] {
     return JSON.parse(localStorage.getItem('workouts'));
   }
 
-  public addWorkout(workout: Workout) {
-    let workouts: Workout[] = this.getAllWorkouts();
-    if (workouts) {
-      workouts.push(workout);
+  public addWorkout(workout: Workout): WorkoutDB {
+    const newWorkout: WorkoutDB = {
+      id: uuidv4(),
+      ...workout,
+    };
+    let storedWorkouts: WorkoutDB[] = this.getAllWorkouts();
+    if (storedWorkouts) {
+      storedWorkouts.push(newWorkout);
     } else {
-      workouts = [workout];
+      storedWorkouts = [];
+      storedWorkouts.push(newWorkout);
     }
-    localStorage.setItem('workouts', JSON.stringify(workouts));
+    localStorage.setItem('workouts', JSON.stringify(storedWorkouts));
+    return newWorkout;
   }
 
-  // TODO get
-  public getWorkout(workoutId: string) {}
+  public getWorkout(workoutId: string): WorkoutDB | null {
+    const storedWorkouts: WorkoutDB[] = this.getAllWorkouts();
+    const workout = storedWorkouts.find((_) => _.id === workoutId);
+    return workout ? workout : null;
+  }
 
-  // TODO update
-  public updateWorkout(workoutID: string, workout: Workout) {}
+  public deleteWorkout(workoutId: string): boolean {
+    const storedWorkouts: WorkoutDB[] = this.getAllWorkouts();
+    const index = storedWorkouts.findIndex((_) => _.id === workoutId);
+    console.log(index);
+    if (index >= 0) {
+      storedWorkouts.splice(index, 1);
+      localStorage.setItem('workouts', JSON.stringify(storedWorkouts));
+      return true;
+    } else {
+      return false;
+    }
+  }
+  public updateWorkout(workout: WorkoutDB) {
+    const storedWorkouts: WorkoutDB[] = this.getAllWorkouts();
+    const index = storedWorkouts.findIndex((_) => _.id === workout.id);
+    storedWorkouts[index] = workout;
+    localStorage.setItem('workouts', JSON.stringify(storedWorkouts));
+  }
 }

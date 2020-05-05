@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import * as data from '../../../db.json';
-import { ActivatedRoute } from '@angular/router';
-import { faArrowCircleRight, faStopwatch, faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
-import { Workout } from '../models/workout.interface';
+import { ActivatedRoute, Router } from '@angular/router';
+import { faArrowCircleRight, faStopwatch, faHourglassHalf, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { WorkoutDB } from '../models/workout.interface';
+import { LocalDBService } from '../services/localDB/local-db.service';
 
 @Component({
   selector: 'app-workout',
@@ -11,15 +11,25 @@ import { Workout } from '../models/workout.interface';
 })
 export class WorkoutComponent implements OnInit {
   // Icons
-  faArrow = faArrowCircleRight;
-  faWatch = faStopwatch;
-  faHourGlass = faHourglassHalf;
+  public faArrow = faArrowCircleRight;
+  public faWatch = faStopwatch;
+  public faHourGlass = faHourglassHalf;
+  public faTrash = faTrashAlt;
 
-  workout: Workout;
+  public workout: WorkoutDB;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private localdb: LocalDBService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.workout = (data as any).default[this.route.snapshot.params.id - 1]; // @TO REPLACE
+  public ngOnInit(): void {
+    this.workout = this.localdb.getWorkout(this.route.snapshot.params.id);
+  }
+
+  public deleteWorkout() {
+    if (this.localdb.deleteWorkout(this.workout.id)) {
+      this.router.navigateByUrl('workouts');
+    } else {
+      // TODO ERROR popup
+      console.error('Impossible to delete the workout');
+    }
   }
 }

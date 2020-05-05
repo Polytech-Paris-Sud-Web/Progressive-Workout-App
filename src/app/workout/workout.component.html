@@ -1,32 +1,27 @@
-<div id="workoutCompo">
-    <div id="workoutHeader">
-        <h3>{{this.workout.name}}</h3>
-        <fa-icon [icon]="faArrow"></fa-icon>
-    </div>
-    <div id="workoutBody">
-
-        <ngb-accordion *ngFor="let groupExercise of workout.groups" class="groupEx">
-            <ngb-panel title="{{groupExercise.name}}">
-                <ng-template ngbPanelContent>
-
-                    <div class="oneExercise" *ngFor="let exercise of groupExercise.exercises">
-                        <div>
-                            <div class="exerciceRepeat">{{exercise.nbOfReps}}</div>
-                            <div class="exerciceName">{{exercise.name}}</div>
-                        </div>
-                        <div>
-                            <fa-icon [icon]="faHourGlass"></fa-icon>
-                            <div class="exerciceRest">{{exercise.restAfterExercise}}</div>
-                        </div>
-
-                    </div>
-
-                </ng-template>
-            </ngb-panel>
-        </ngb-accordion>
-
-    </div>
+<div id="workoutCompo" *ngIf="workout">
+  <div id="workoutHeader">
+    <h3>{{ this.workout.name }}</h3>
+    <fa-icon (click)="deleteWorkout()" [icon]="faTrash"></fa-icon>
+    <fa-icon [icon]="faArrow"></fa-icon>
+  </div>
+  <div id="workoutBody">
+    <ngb-accordion *ngFor="let groupExercise of workout.groups" class="groupEx">
+      <ngb-panel title="{{ groupExercise.name }}">
+        <ng-template ngbPanelContent>
+          <div class="oneExercise" *ngFor="let exercise of groupExercise.exercises">
+            <div>
+              <div class="exerciceRepeat">{{ exercise.nbOfReps }}</div>
+              <div class="exerciceName">{{ exercise.name }}</div>
+            </div>
+            <div>
+              <fa-icon [icon]="faHourGlass"></fa-icon>
+              <div class="exerciceRest">{{ exercise.restAfterExercise }}</div>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
 </div>
 
-
-<fa-icon [icon]="faArrow"  class="float-launch"></fa-icon>
+<fa-icon [icon]="faArrow" class="float-launch"></fa-icon>

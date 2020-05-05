@@ -5,6 +5,7 @@ import * as exercisesJson from '../../assets/exercises.json';
 import { Exercise } from '../models/exercise';
 import { LocalDBService } from '../services/localDB/local-db.service';
 import { Workout } from '../models/workout.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-workout',
@@ -17,20 +18,21 @@ export class CreateWorkoutComponent {
   public workoutForm: FormGroup;
   public exercises: Exercise[] = (exercisesJson as any).default;
 
-  constructor(private fb: FormBuilder, private localdb: LocalDBService) {
+  constructor(private fb: FormBuilder, private localdb: LocalDBService, private router: Router) {
     this.workoutForm = this.fb.group({
       name: ['', Validators.required],
-      exercises: this.fb.array([this.newGroup()]),
+      groups: this.fb.array([this.newGroup()]),
     });
   }
 
   public createWorkout() {
     const newWorkout: Workout = { ...this.workoutForm.value };
-    this.localdb.addWorkout(newWorkout);
+    const workoutDB = this.localdb.addWorkout(newWorkout);
+    this.router.navigateByUrl('workout/' + workoutDB.id);
   }
 
   get groups() {
-    return this.workoutForm.get('exercises') as FormArray;
+    return this.workoutForm.get('groups') as FormArray;
   }
 
   public addGroup() {
