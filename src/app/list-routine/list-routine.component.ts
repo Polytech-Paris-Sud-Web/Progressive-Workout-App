@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as data from '../../../db.json';
+import { Routine } from '../models/routine.interface';
 
 @Component({
   selector: 'app-list-routine',
@@ -8,12 +9,11 @@ import * as data from '../../../db.json';
 })
 export class ListRoutineComponent implements OnInit {
 
-  _routines ;//: Routine[];
-  _all_routines; //: Routine[];
+  _routines : Routine[];
+  _all_routines: Routine[];
 
   /**
    * @description Update the routines list.
-   * @TODO
    */
   updateRoutines(value: string ): void {
 

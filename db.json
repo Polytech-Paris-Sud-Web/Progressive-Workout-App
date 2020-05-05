@@ -1,8 +1,93 @@
 [
-    { "id": 1, "name": "Routine...." },
-    { "id": 2, "name": "Matin tranquille." },
-    { "id": 3, "name": "Séance du soir..." },
-    { "id": 4, "name": "Test Police"},
-    { "id": 5, "name": "More test !"},
-    { "id": 6, "name": "A test...again !"}
+    { "id": 1,
+        "name": "My First Routine",
+        "exercises" : [{
+            "name": "Début",
+            "exercises": [
+                {
+                    "name": "push ups",
+                    "nbOfReps" :12,
+                    "restAfterExercise" : 45
+                },
+                {
+                    "name": "pull ups",
+                    "nbOfReps" :12,
+                    "restAfterExercise" : 45
+                },
+                {
+                    "name": "squats",
+                    "nbOfReps": 12,
+                    "restAfterExercise": 45
+                }
+            ]
+        },
+        {
+            "name": "Milieu",
+            "exercises": [
+                {
+                    "name": "push ups",
+                    "nbOfReps": 12,
+                    "restAfterExercise": 45
+                },
+                {
+                    "name": "pull ups",
+                    "nbOfReps": 12,
+                    "restAfterExercise": 45
+                },
+                {
+                    "name": "squats",
+                    "nbOfReps": 12,
+                    "restAfterExercise": 45
+                }
+            ]
+        }
+    ]
+    },
+    {
+        "id": 2,
+        "name": "Best Routine EVER zegzegzegzegzegzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzza !",
+        "exercises": [
+            {
+                "name": "Let's start ! ",
+                "exercises": [
+                    {
+                        "name": "push ups",
+                        "nbOfReps": 12,
+                        "restAfterExercise": 45
+                    },
+                    {
+                        "name": "pull ups",
+                        "nbOfReps": 12,
+                        "restAfterExercise": 45
+                    },
+                    {
+                        "name": "squats",
+                        "nbOfReps": 12,
+                        "restAfterExercise": 45
+                    }
+                ]
+            },
+            {
+                "name": "To finish !",
+                "exercises": [
+                    {
+                        "name": "push ups",
+                        "nbOfReps": 28,
+                        "restAfterExercise": 45
+                    },
+                    {
+                        "name": "pull ups",
+                        "nbOfReps": 12,
+                        "restAfterExercise": 30
+                    },
+                    {
+                        "name": "squats",
+                        "nbOfReps": 14,
+                        "restAfterExercise": 45
+                    }
+                ]
+            }
+        ]
+    }
+
 ]
