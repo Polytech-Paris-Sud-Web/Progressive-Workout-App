@@ -1,4 +1,4 @@
-<div id="listRoutineTopBar">   
+<div id="listRoutineTopBar">
     <div id="searchMenu"  class="form-group">
             <input  id="searchBar" type="text"  class="form-control"
             placeholder="Search in your routines...." aria-label="Search"
@@ -8,7 +8,7 @@
 </div>
 
 <div id="listRoutine">
-    <div *ngFor="let routine of _routines">
+    <div *ngFor="let routine of routines">
         <a routerLink="/routine/{{routine.id}}"  routerLinkActive="active">
             <div class="oneRoutine align-middle">{{routine.name}}</div>
         </a>
