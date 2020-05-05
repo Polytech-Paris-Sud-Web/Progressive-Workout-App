@@ -33,7 +33,7 @@
 #listRoutineTopBar{
 
     display: flex;
-    justify-content: space-betweens;
+    justify-content: space-between;
     margin:auto;
     background-color: $main-theme-color;
     padding: 5px;
@@ -43,7 +43,7 @@
         flex:2;
         margin-right: 15px;
         margin-bottom: -10px;
-        
+
         input{background-color: darkgray;}
     }
 
