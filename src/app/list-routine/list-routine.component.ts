@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as data from '../../../db.json';
 
 @Component({
   selector: 'app-list-routine',
@@ -25,17 +26,19 @@ export class ListRoutineComponent implements OnInit {
    * @TODO
    */
   updateRoutines(value : string ): void {
-    this._all_routines = [
-      { 'id': 1, 'titre': "Routine...." },
-      { 'id': 2, 'titre': "Matin tranquille." },
-      { 'id': 3, 'titre': "Séance du soir..." },
-      { 'id': 4, 'titre': "Test Police" }
-    ];
     
+    console.log(data);
+
+    if(data.default == undefined)
+      this._all_routines = data;
+    else
+      this._all_routines = data.default;
+       
+
     //Filter results
     if(value != undefined){
       this._routines = this._all_routines.filter(
-        (customRoutine) => customRoutine.titre.toLowerCase().match(value.toLowerCase())
+        (customRoutine) => customRoutine.name.toLowerCase().match(value.toLowerCase())
       );
     }
     //No filter required

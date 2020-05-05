@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import * as data from '../../../db.json';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-routine',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoutineComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  id_routine;
+
+  routine;
+
+    constructor(private route : ActivatedRoute) { 
+    }
 
   ngOnInit(): void {
+    console.log(this.route.snapshot.params.id);
+    this.routine = data.default[this.route.snapshot.params.id-1]; //@TO REPLACE
   }
 
 }

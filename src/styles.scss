@@ -7,11 +7,16 @@
 $main-theme-color:#232931;
 $main-theme-secondary:#393e46;
 $main-theme-title:#4ecca3;
+$main-theme-degrade:linear-gradient(to top, #4ecca3, #0ea687);
+$main-theme-degrade-reverse:linear-gradient(to top, #0ea687, #4ecca3);
+$background-degrade : linear-gradient($main-theme-color,$main-theme-secondary);
+
 $main-theme-light:#eeeeee;
 
 $main-font:'Open Sans', sans-serif;
 
-body{
- background-color:$main-theme-color;
+html,body{
+ background: $background-degrade;
  font-family: $main-font;
+ height: 100%;
 }
