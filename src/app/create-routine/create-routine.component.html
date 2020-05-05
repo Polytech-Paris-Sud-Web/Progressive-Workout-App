@@ -1,6 +1,6 @@
-<form class="form" [formGroup]="routineForm">
+<form class="form" [formGroup]="routineForm" (ngSubmit)="createWorkout()">
   <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Routine name" formControlName="name">
+    <input type="text" class="form-control" placeholder="Workout name" formControlName="name">
   </div>
   <div class="groups" formArrayName="exercises">
     <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
@@ -23,10 +23,10 @@
                   <th scope="col">#</th>
                   <th scope="col">Name</th>
                   <th scope="col">Number of reps</th>
-                  <th scope="col">Rest time</th>
+                  <th scope="col">Rest time (seconds)</th>
                   <th scope="col">
-                    <button class="btn btn-success" >
-                      <fa-icon  (click)="addExercise(i)" [icon]="addIcon"></fa-icon>
+                    <button class="btn btn-success" (click)="addExercise(i)" >
+                      <fa-icon [icon]="addIcon"></fa-icon>
                     </button>
                   </th>
                 </tr>
@@ -37,9 +37,9 @@
                   <ng-container [formGroupName]="j">
                     <th scope="row">{{ j + 1 }}</th>
                     <td>
-                      <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Exercise name" formControlName="name">
-                      </div>
+                      <select class="custom-select" formControlName="name">
+                        <option *ngFor="let ex of exercises" value="{{ex.name}}" >{{ex.name}}</option>
+                      </select>
                     </td>
                     <td>
                       <div class="input-group mb-3">
@@ -51,9 +51,11 @@
                         <input type="text" class="form-control" placeholder="Rest time" formControlName="restAfterExercise">
                       </div>
                     </td>
-                    <!--<td>
-                      <button class="btn btn-danger" (click)="deleteExercise(i,j)">Delete</button>
-                    </td>-->
+                    <td>
+                      <button class="btn btn-danger" (click)="deleteExercise(i,j)">
+                        <fa-icon [icon]="deleteIcon"></fa-icon>
+                      </button>
+                    </td>
                   </ng-container>
                 </tr>
                 </tbody>
@@ -72,5 +74,5 @@
     </ngb-accordion>
   </div>
 
-  <button class="btn btn-success"  type="submit" [disabled]="!routineForm.valid">Submit</button>
+  <button class="btn btn-success"  type="submit" [disabled]="!routineForm.valid">Create workout</button>
 </form>
