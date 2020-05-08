@@ -11,6 +11,8 @@ import { environment } from '../environments/environment';
 import { CreateRoutineComponent } from './create-routine/create-routine.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PwaService } from './services/pwa/pwa.service';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 
 @NgModule({
   declarations: [AppComponent, RoutineComponent, ListRoutineComponent, CreateRoutineComponent],
@@ -21,6 +23,7 @@ import { PwaService } from './services/pwa/pwa.service';
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    SweetAlert2Module.forRoot(),
 
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],

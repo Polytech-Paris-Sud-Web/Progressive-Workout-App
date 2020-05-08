@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { faTrashAlt, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faPlus, faHome } from '@fortawesome/free-solid-svg-icons';
 import * as exercisesJson from '../../assets/exercises.json';
 import { Exercise } from '../models/exercise';
 import { LocalDBService } from '../services/localDB/local-db.service';
 import { Routine } from '../models/routine.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-routine',
@@ -14,6 +15,8 @@ import { Routine } from '../models/routine.interface';
 export class CreateRoutineComponent {
   public deleteIcon = faTrashAlt;
   public addIcon = faPlus;
+  public homeIcon = faHome;;
+
   public routineForm: FormGroup;
   public exercises: Exercise[] = (exercisesJson as any).default;
 
@@ -25,8 +28,32 @@ export class CreateRoutineComponent {
   }
 
   public createWorkout() {
-    const newWorkout: Routine = { ...this.routineForm.value };
-    this.localdb.addWorkout(newWorkout);
+    Swal.fire({
+      title: '<span style="color:#4ecca3">Add my Workout ?</span>',
+      html:
+        '<span style="color:#eeeeee">You gonna add a workout in your personnal list.' + 'Is it okay for you ?</span>',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, add it!',
+      cancelButtonText: 'Not for now.',
+      background: '#393e46',
+      confirmButtonColor: '#4ecca3',
+      cancelButtonColor: '#FF8C00',
+    }).then((result) => {
+      if (result.value) {
+        const newWorkout: Routine = { ...this.routineForm.value };
+        this.localdb.addWorkout(newWorkout);
+        this.resetForm();
+        Swal.fire('Added!', 'Your workout has been added. Please consult your list !', 'success');
+      }
+    });
+  }
+
+  public resetForm() {
+    this.routineForm = this.fb.group({
+      name: ['', Validators.required],
+      exercises: this.fb.array([this.newGroup()]),
+    });
   }
 
   get groups() {
