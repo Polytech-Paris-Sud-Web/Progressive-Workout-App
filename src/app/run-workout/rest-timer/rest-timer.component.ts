@@ -10,7 +10,7 @@ import { RestTimerService } from '../../services/restTimer/rest-timer.service';
 })
 export class RestTimerComponent {
   public restTime = 0;
-  public counter: Observable<number>;
+  public counter: Observable<void>;
   public initialValue: number;
 
   constructor(private rts: RestTimerService) {
