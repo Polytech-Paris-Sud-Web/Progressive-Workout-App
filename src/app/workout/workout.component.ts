@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faArrowCircleRight, faStopwatch, faHourglassHalf, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowCircleRight,
+  faStopwatch,
+  faHourglassHalf,
+  faTrashAlt,
+  faHome,
+} from '@fortawesome/free-solid-svg-icons';
 import { WorkoutDB } from '../models/workout.interface';
 import { LocalDBService } from '../services/localDB/local-db.service';
 
@@ -13,6 +19,7 @@ export class WorkoutComponent implements OnInit {
   // Icons
   public faArrow = faArrowCircleRight;
   public faWatch = faStopwatch;
+  public homeIcon = faHome;
   public faHourGlass = faHourglassHalf;
   public faTrash = faTrashAlt;
 

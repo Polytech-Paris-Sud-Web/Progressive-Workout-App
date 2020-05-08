@@ -23,7 +23,6 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     ReactiveFormsModule,
     FontAwesomeModule,
     SweetAlert2Module.forRoot(),
-
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [PwaService],
