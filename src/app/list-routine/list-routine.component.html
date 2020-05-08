@@ -8,8 +8,8 @@
 </div>
 
 <div id="listRoutine">
-    <div *ngFor="let routine of routines">
-        <a routerLink="/routine/{{routine.id}}"  routerLinkActive="active">
+    <div *ngFor="let routine of routines; index as i">
+        <a routerLink="/routine/{{i}}"  routerLinkActive="active">
             <div class="oneRoutine align-middle">{{routine.name}}</div>
         </a>
     </div>
