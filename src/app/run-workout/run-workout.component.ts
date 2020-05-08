@@ -1,12 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { RestTimerService } from '../services/restTimer/rest-timer.service';
 
 @Component({
   selector: 'app-run-workout',
   templateUrl: './run-workout.component.html',
   styleUrls: ['./run-workout.component.scss'],
 })
-export class RunWorkoutComponent implements OnInit {
-  constructor() {}
+export class RunWorkoutComponent {
+  constructor(private rts: RestTimerService) {
+    this.resetTimer();
+  }
 
-  ngOnInit(): void {}
+  resetTimer() {
+    this.rts.resetTimerValue(1000);
+  }
 }

@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Observable, timer } from 'rxjs';
+import { map, take } from 'rxjs/operators';
+import { RestTimerService } from '../../services/restTimer/rest-timer.service';
 
 @Component({
   selector: 'app-rest-timer',
@@ -6,5 +9,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./rest-timer.component.scss'],
 })
 export class RestTimerComponent {
-  public progress = 75;
+  public restTime = 0;
+  public counter: Observable<number>;
+  public initialValue: number;
+
+  constructor(private rts: RestTimerService) {
+    this.rts.getRestTimer().subscribe((newTimerValue) => {
+      if (this.restTime === 0) {
+        this.restTime = newTimerValue;
+        this.initialValue = this.restTime;
+        this.initTimer();
+        this.counter.subscribe();
+      }
+    });
+  }
+
+  private initTimer() {
+    this.counter = timer(0, 10).pipe(
+      take(this.restTime),
+      map(() => {
+        --this.restTime;
+      })
+    );
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-spinner',
@@ -7,14 +7,15 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 })
 export class SpinnerComponent implements OnChanges {
   @Input() value = 0;
+  @Input() restTime: number;
 
   public circumference: number = 2 * Math.PI * 47;
   public strokeDashoffset = 0;
-  public color = '#0000ff';
+  public color = '#F48E61';
 
   public ngOnChanges(changes: SimpleChanges) {
     if (changes.value) {
-      this.onPercentageChanged(changes.value.currentValue);
+      this.onPercentageChanged((changes.value.currentValue / this.restTime) * 100);
     }
   }
 
