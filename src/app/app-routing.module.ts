@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CreateRoutineComponent } from './create-routine/create-routine.component';
-import { ListRoutineComponent } from './list-routine/list-routine.component';
-import { RoutineComponent } from './routine/routine.component';
+import { CreateWorkoutComponent } from './create-workout/create-workout.component';
+import { ListWorkoutComponent } from './list-workout/list-workout.component';
+import { WorkoutComponent } from './workout/workout.component';
 
 const routes: Routes = [
-  { path: 'create-routine', component: CreateRoutineComponent },
-  { path: 'routine/:id', component: RoutineComponent },
-  { path: 'routines', component: ListRoutineComponent },
-  { path: '**', component: ListRoutineComponent },
+  { path: 'create-workout', component: CreateWorkoutComponent },
+  { path: 'workout/:id', component: WorkoutComponent },
+  { path: 'workouts', component: ListWorkoutComponent },
+  { path: '**', component: ListWorkoutComponent },
 ];
 
 @NgModule({
