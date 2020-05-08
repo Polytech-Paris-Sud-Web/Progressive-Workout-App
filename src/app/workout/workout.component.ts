@@ -39,4 +39,8 @@ export class WorkoutComponent implements OnInit {
       console.error('Impossible to delete the workout');
     }
   }
+
+  public runWorkout() {
+    this.router.navigateByUrl(`workout/${this.workout.id}/run`);
+  }
 }

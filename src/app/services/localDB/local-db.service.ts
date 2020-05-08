@@ -11,7 +11,8 @@ export class LocalDBService {
   }
 
   public getAllWorkouts(): WorkoutDB[] {
-    return JSON.parse(localStorage.getItem('workouts'));
+    const workouts = JSON.parse(localStorage.getItem('workouts'));
+    return workouts || [];
   }
 
   public addWorkout(workout: Workout): WorkoutDB {

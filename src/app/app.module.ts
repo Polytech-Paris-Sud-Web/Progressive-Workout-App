@@ -12,9 +12,22 @@ import { CreateWorkoutComponent } from './create-workout/create-workout.componen
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PwaService } from './services/pwa/pwa.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { RunWorkoutComponent } from './run-workout/run-workout.component';
+import { RestTimerComponent } from './run-workout/rest-timer/rest-timer.component';
+import { SpinnerComponent } from './run-workout/rest-timer/spinner/spinner.component';
+import { GlobalTimerComponent } from './run-workout/global-timer/global-timer.component';
 
 @NgModule({
-  declarations: [AppComponent, WorkoutComponent, ListWorkoutComponent, CreateWorkoutComponent],
+  declarations: [
+    AppComponent,
+    WorkoutComponent,
+    ListWorkoutComponent,
+    CreateWorkoutComponent,
+    RunWorkoutComponent,
+    RestTimerComponent,
+    SpinnerComponent,
+    GlobalTimerComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -9,7 +9,7 @@
   <div id="workoutHeader">
     <h3>{{ this.workout.name }}</h3>
     <fa-icon (click)="deleteWorkout()" [icon]="faTrash"></fa-icon>
-    <fa-icon [icon]="faArrow"></fa-icon>
+    <fa-icon (click)="runWorkout()" [icon]="faArrow"></fa-icon>
   </div>
   <div id="workoutBody">
     <ngb-accordion *ngFor="let groupExercise of workout.groups" class="groupEx">
@@ -31,4 +31,4 @@
   </div>
 </div>
 
-<fa-icon [icon]="faArrow" class="float-launch"></fa-icon>
+<fa-icon (click)="runWorkout()" [icon]="faArrow" class="float-launch"></fa-icon>

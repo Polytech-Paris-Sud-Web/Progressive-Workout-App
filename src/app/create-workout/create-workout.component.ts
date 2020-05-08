@@ -66,15 +66,13 @@ export class CreateWorkoutComponent {
   }
 
   public deleteExercise(groupId: number, exerciseId: number) {
-    const groups = this.workoutForm.controls.exercises as FormArray;
-    const group = groups.at(groupId) as FormGroup;
+    const group = this.groups.at(groupId) as FormGroup;
     const groupExercises = group.controls.exercises as FormArray;
     groupExercises.removeAt(exerciseId);
   }
 
   public deleteGroup(i: number) {
-    const control = this.workoutForm.controls.exercises as FormArray;
-    control.removeAt(i);
+    this.groups.removeAt(i);
   }
 
   private newGroup() {
