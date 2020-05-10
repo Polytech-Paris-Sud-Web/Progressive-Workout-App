@@ -16,6 +16,7 @@ import { RunWorkoutComponent } from './run-workout/run-workout.component';
 import { RestTimerComponent } from './run-workout/rest-timer/rest-timer.component';
 import { SpinnerComponent } from './run-workout/rest-timer/spinner/spinner.component';
 import { GlobalTimerComponent } from './run-workout/global-timer/global-timer.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { GlobalTimerComponent } from './run-workout/global-timer/global-timer.co
     RestTimerComponent,
     SpinnerComponent,
     GlobalTimerComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
