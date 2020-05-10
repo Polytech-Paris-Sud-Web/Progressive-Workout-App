@@ -37,6 +37,7 @@
   background-color: $main-theme-color;
   padding: 5px;
   border-bottom: 2px solid $main-theme-secondary;
+  margin-top: 20px;
 
   #searchMenu {
     flex: 2;
@@ -45,6 +46,7 @@
 
     input {
       background-color: darkgray;
+      height: 50px;
     }
   }
 

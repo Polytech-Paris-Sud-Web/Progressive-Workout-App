@@ -1,0 +1,26 @@
+<div id="menuHeader">
+  <h3>~ P.W.A ~</h3>
+</div>
+
+<div id="listRouting">
+  <a routerLink="workouts" routerLinkActive="active">
+    <div class="oneRoute">
+      <fa-icon [icon]="iconList"></fa-icon>
+      <div class="textRoute">My Workouts</div>
+    </div>
+  </a>
+
+  <a routerLink="create-workout" routerLinkActive="active">
+    <div class="oneRoute">
+      <fa-icon [icon]="iconAdd"></fa-icon>
+      <div class="textRoute">New Workout</div>
+    </div>
+  </a>
+
+  <a>
+    <div class="oneRoute" (click)="clearCache()">
+      <fa-icon [icon]="iconClear"></fa-icon>
+      <div class="textRoute">Clear my Workouts</div>
+    </div>
+  </a>
+</div>

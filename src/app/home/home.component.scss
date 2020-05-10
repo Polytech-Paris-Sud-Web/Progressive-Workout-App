@@ -1,0 +1,70 @@
+@import '../../styles.scss';
+
+#menuHeader {
+  background: $main-theme-degrade;
+  height: 80px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed lightgrey;
+
+  h3 {
+    text-align: center;
+    color: $main-theme-color;
+    font-size: 30px;
+    font-weight: bolder;
+  }
+}
+
+#listRouting {
+  a {
+    text-decoration: none;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .oneRoute {
+    margin: 5px auto 5px auto;
+    padding: 10px;
+    cursor: pointer;
+
+    width: 100%;
+
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+    .textRoute {
+      color: lightgrey;
+      font-size: 25px;
+      font-variant: small-caps;
+      margin-top: 15px;
+      border-radius: 5px;
+      padding-top: 25px;
+
+      height: 100px;
+      width: 85%;
+      text-align: center;
+
+      z-index: 1;
+    }
+
+    fa-icon {
+      font-size: 45px;
+      color: lightgrey;
+      margin: -25px -20px 0 0;
+      z-index: 10;
+    }
+  }
+}
+
+#listRouting a:nth-child(0n + 1) .oneRoute .textRoute {
+  background-color: #0ea674;
+}
+#listRouting a:nth-child(0n + 2) .oneRoute .textRoute {
+  background-color: #008f60;
+}
+#listRouting a:nth-child(0n + 3) .oneRoute .textRoute {
+  background-color: #00714c;
+}

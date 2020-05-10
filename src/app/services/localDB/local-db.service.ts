@@ -55,4 +55,8 @@ export class LocalDBService {
     storedWorkouts[index] = workout;
     localStorage.setItem('workouts', JSON.stringify(storedWorkouts));
   }
+
+  public deleteAllWorkouts() {
+    localStorage.removeItem('workouts');
+  }
 }
