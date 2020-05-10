@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this.localdb.deleteAllWorkouts();
-        Swal.fire('Added!', 'Your workout has been added. Please consult your list !', 'success');
+        Swal.fire('Completed !', 'Your workout has been cleared.', 'success');
       }
     });
   }
