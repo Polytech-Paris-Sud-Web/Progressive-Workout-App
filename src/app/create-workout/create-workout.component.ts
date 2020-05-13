@@ -151,7 +151,7 @@ export class CreateWorkoutComponent {
     });
   }
 
-  private addExercise(groupId: number) {
+  public addExercise(groupId: number) {
     const inputExercice = {};
     this.exercises.forEach((el, index) => {
       inputExercice[this.exercises[index].name] = this.exercises[index].name;
