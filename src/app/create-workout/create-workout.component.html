@@ -4,77 +4,55 @@
   </a>
 </div>
 <hr />
+
 <form class="form" [formGroup]="workoutForm">
   <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Workout name" formControlName="name" />
+    <input
+      maxlength="25"
+      type="text"
+      class="form-control"
+      placeholder="Workout name"
+      formControlName="name"
+      value="{{ editWorkout.name }}"
+    />
   </div>
+
   <div class="groups" formArrayName="groups">
     <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
-      <ngb-panel id="custom-panel-{{ i }}" class="workoutGroup" *ngFor="let group of groups.controls; let i = index">
+      <!-- Pour chaque groupe -->
+      <ngb-panel id="custom-panel-{{ i }}" class="workoutGroup" *ngFor="let group of editWorkout.groups; let i = index">
         <ng-container [formGroupName]="i">
           <ng-template ngbPanelHeader let-opened="opened">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="input-group m-0 group-name">
-                <input type="text" class="form-control" placeholder="Group name" formControlName="name" />
+            <div>
+              <div class="m-0 group-name groupeNameWorkout">{{ group.name }}</div>
+
+              <div class="d-flex align-items-center justify-content-between">
+                <button ngbPanelToggle class="btn btn-link p-0">Collapse</button>
+                <button class="btn btn-success" (click)="addExercise(i)">
+                  <fa-icon [icon]="addIcon"></fa-icon>
+                </button>
+                <button class="btn btn-danger" (click)="deleteGroup(i)">
+                  <fa-icon [icon]="deleteIcon"></fa-icon>
+                </button>
               </div>
-              <button ngbPanelToggle class="btn btn-link p-0">Collapse</button>
-              <button class="btn btn-link p-0" (click)="deleteGroup(i)">Delete group</button>
             </div>
           </ng-template>
+
           <ng-template ngbPanelContent>
-            <div formArrayName="exercises">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Number of reps</th>
-                    <th scope="col">Rest time (seconds)</th>
-                    <th scope="col">
-                      <button class="btn btn-success" (click)="addExercise(i)">
-                        <fa-icon [icon]="addIcon"></fa-icon>
-                      </button>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let exercise of group.controls.exercises.controls; let j = index">
-                    <ng-container [formGroupName]="j">
-                      <th scope="row">{{ j + 1 }}</th>
-                      <td>
-                        <select class="custom-select" formControlName="name">
-                          <option *ngFor="let ex of exercises" value="{{ ex.name }}">{{ ex.name }}</option>
-                        </select>
-                      </td>
-                      <td>
-                        <div class="input-group mb-3">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Number of reps"
-                            formControlName="nbOfReps"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div class="input-group mb-3">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Rest time"
-                            formControlName="restAfterExercise"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <button class="btn btn-danger" (click)="deleteExercise(i, j)">
-                          <fa-icon [icon]="deleteIcon"></fa-icon>
-                        </button>
-                      </td>
-                    </ng-container>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="oneExercise" *ngFor="let exercise of group.exercises; let j = index">
+              <div class="exerciceName">{{ exercise.name }}</div>
+              <div class="descriptionExercice">
+                <div class="exerciceRepeat">{{ exercise.nbOfReps }}</div>
+                <div>
+                  <fa-icon [icon]="faHourGlass"></fa-icon>
+                  <div class="exerciceRest">{{ exercise.restAfterExercise }}</div>
+                </div>
+                <div>
+                  <!-- <fa-icon class="iconEditExercice" [icon]="editIcon"></fa-icon> -->
+                  <fa-icon class="iconDeleteExercice" [icon]="deleteIcon" (click)="deleteExercise(i, j)"></fa-icon>
+                </div>
+              </div>
+              <hr />
             </div>
           </ng-template>
         </ng-container>
