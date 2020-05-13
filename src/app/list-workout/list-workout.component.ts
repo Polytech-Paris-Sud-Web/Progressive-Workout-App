@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Workout } from '../models/workout.interface';
 import { LocalDBService } from '../services/localDB/local-db.service';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list-workout',
@@ -10,6 +11,7 @@ import { LocalDBService } from '../services/localDB/local-db.service';
 export class ListWorkoutComponent implements OnInit {
   public displayWorkouts: Workout[];
   public allWorkouts: Workout[];
+  public homeIcon = faHome;
 
   constructor(private localdb: LocalDBService) {
     this.allWorkouts = this.localdb.getAllWorkouts();
