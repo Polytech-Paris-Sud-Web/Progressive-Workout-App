@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { RestTimerService } from '../services/restTimer/rest-timer.service';
 import { LocalDBService } from '../services/localDB/local-db.service';
 import { WorkoutDB } from '../models/workout.interface';
-import { ActivatedRoute } from '@angular/router';
-import { Exercise } from '../models/exercise';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WorkoutExercise } from '../models/workout-exercise';
-import { WorkoutExerciseGroup } from '../models/workout-exercise-group';
+import Swal from 'sweetalert2';
+import { GlobalTimerService } from '../services/globalTimer/global-timer.service';
+import moment from 'moment';
 
 @Component({
   selector: 'app-run-workout',
@@ -13,63 +14,76 @@ import { WorkoutExerciseGroup } from '../models/workout-exercise-group';
   styleUrls: ['./run-workout.component.scss'],
 })
 export class RunWorkoutComponent implements OnInit {
+  private allExercises: WorkoutExercise[] = [];
   public workout: WorkoutDB;
-  public currentExercice: WorkoutExercise;
+  public currentExercise: WorkoutExercise;
+  public nextExercise: WorkoutExercise;
 
-  private indexExercice: number;
-  private exerciceRun: boolean;
-  public labelTimer: string;
-  public labelNextOrCurrent: string;
+  public currentRestTime = 0;
 
-  private allExercice: WorkoutExercise[];
+  public displayCurrent: boolean;
 
-  constructor(private rts: RestTimerService, private localdb: LocalDBService, private route: ActivatedRoute) {
-    this.indexExercice = 0;
-    this.exerciceRun = true;
-    this.labelTimer = 'Ready !';
-    this.labelNextOrCurrent = 'Current Exercice';
-    this.allExercice = [];
+  private indexExercise: number;
+  public exerciseRun: boolean;
+
+  constructor(
+    private rts: RestTimerService,
+    private localdb: LocalDBService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private globalTimerService: GlobalTimerService
+  ) {
+    this.displayCurrent = true;
+    this.exerciseRun = true;
+    this.indexExercise = 0;
   }
 
-  resetTimer() {
-    this.rts.resetTimerValue(this.currentExercice.restAfterExercise * 100);
-    // Attendre la fin du timer pour changer le tout.
-    this.rts.getRestTimer().subscribe((remainTime) => {
-      if (remainTime === 0) {
-        this.labelNextOrCurrent = 'Current Exercice';
-        console.log('New Exercice');
-        this.exerciceRun = true;
-      }
-    });
-  }
-
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.workout = this.localdb.getWorkout(this.route.snapshot.params.id);
-
-    this.buildListExercice();
-    this.currentExercice = this.allExercice[0];
+    this.buildListExercise();
+    this.currentExercise = this.allExercises[0];
+    this.nextExercise =
+      this.indexExercise + 1 > this.allExercises.length ? undefined : this.allExercises[this.indexExercise + 1];
+    this.currentRestTime = this.currentExercise.restAfterExercise;
   }
 
-  public restTimerClick() {
-    if (this.exerciceRun) {
-      this.resetTimer();
-      this.labelNextOrCurrent = 'Next Exercice';
-      this.displayNextExercice();
-      this.exerciceRun = false;
-    } else {
-    }
-  }
-
-  public buildListExercice(): void {
+  public buildListExercise(): void {
     this.workout.groups.forEach((g) => {
       g.exercises.forEach((e) => {
-        this.allExercice.push(e);
+        this.allExercises.push(e);
       });
     });
   }
 
-  public displayNextExercice(): void {
-    this.indexExercice++;
-    this.currentExercice = this.allExercice[this.indexExercice];
+  public timerStarted() {
+    this.displayCurrent = false;
+  }
+
+  public restTimeEnded() {
+    this.displayNextExercise();
+    this.displayCurrent = true;
+  }
+
+  public displayNextExercise(): void {
+    this.indexExercise++;
+    if (this.indexExercise >= this.allExercises.length) {
+      this.endOfWorkout();
+    } else {
+      this.currentExercise = this.allExercises[this.indexExercise];
+      this.nextExercise =
+        this.indexExercise + 1 > this.allExercises.length ? undefined : this.allExercises[this.indexExercise + 1];
+      this.currentRestTime = this.currentExercise.restAfterExercise;
+    }
+  }
+
+  public endOfWorkout() {
+    this.exerciseRun = false;
+    Swal.fire(
+      'Good job!',
+      `You just finished your workout in ${this.globalTimerService.getGlobalTimerAsString()}`,
+      'success'
+    ).then(() => {
+      this.router.navigate(['']);
+    });
   }
 }

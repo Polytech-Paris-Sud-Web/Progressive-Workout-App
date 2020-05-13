@@ -38,6 +38,7 @@
     "angular-webstorage-service": "^1.0.2",
     "bootstrap": "^4.4.0",
     "express": "^4.17.1",
+    "moment": "^2.25.3",
     "path": "^0.12.7",
     "prettier": "2.0.5",
     "rxjs": "~6.5.4",

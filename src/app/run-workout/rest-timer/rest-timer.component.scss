@@ -1,4 +1,17 @@
 #restTimerMainBlock {
   margin: auto;
   text-align: center;
+  width: 128px;
+  height: 128px;
+}
+
+.doneButton {
+  margin: 0 auto;
+  background-color: #0ea674;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 128px;
+  width: 128px;
+  border-radius: 50%;
 }
