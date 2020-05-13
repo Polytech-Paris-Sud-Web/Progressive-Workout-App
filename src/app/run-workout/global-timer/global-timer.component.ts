@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, timer } from 'rxjs';
-import { take } from 'rxjs/operators';
-import { counter } from '@fortawesome/fontawesome-svg-core';
+import { GlobalTimerService } from '../../services/globalTimer/global-timer.service';
 
 @Component({
   selector: 'app-global-timer',
@@ -10,21 +8,18 @@ import { counter } from '@fortawesome/fontawesome-svg-core';
 })
 export class GlobalTimerComponent implements OnInit {
   counter: number;
-  elapseSeconds: number;
-  elapseMinutes: number;
-  elapseMSeconds: number;
 
-  strElapseSeconds: string;
-  strElapseMinutes: string;
-  strElapseMSeconds: string;
+  elapsedHours: string;
+  elapsedMinutes: string;
+  elapsedSeconds: string;
 
   timerRef;
   running = false;
 
-  constructor() {
-    this.strElapseMinutes = '00';
-    this.strElapseSeconds = '00';
-    this.strElapseMSeconds = '000';
+  constructor(private globalTimerService: GlobalTimerService) {
+    this.elapsedHours = '00';
+    this.elapsedMinutes = '00';
+    this.elapsedSeconds = '00';
   }
 
   public ngOnInit(): void {
@@ -39,28 +34,11 @@ export class GlobalTimerComponent implements OnInit {
       this.timerRef = setInterval(() => {
         this.counter = Date.now() - startTime;
 
-        // Get minutes and convert
-        this.elapseMinutes = Math.trunc(Math.trunc(this.counter / 1000) / 60);
-        this.strElapseMinutes = this.elapseMinutes.toString();
-        if (this.strElapseMinutes.length !== 2) {
-          this.strElapseMinutes = '0' + this.strElapseMinutes;
-        }
-
-        // Get seconds and convert
-        this.elapseSeconds = Math.trunc(this.counter / 1000) - this.elapseMinutes * 60;
-        this.strElapseSeconds = this.elapseSeconds.toString();
-        if (this.strElapseSeconds.length !== 2) {
-          this.strElapseSeconds = '0' + this.strElapseSeconds;
-        }
-
-        // Get miliseconds and convert
-        this.elapseMSeconds = this.counter - 1000 * this.elapseSeconds - 60 * 1000 * this.elapseMinutes;
-        this.strElapseMSeconds = this.elapseMSeconds.toString();
-        if (this.strElapseMSeconds.length === 1) {
-          this.strElapseMSeconds = '00' + this.strElapseMSeconds;
-        } else if (this.strElapseMSeconds.length === 2) {
-          this.strElapseMSeconds = '0' + this.strElapseMSeconds;
-        }
+        this.globalTimerService.setGlobalTimer(this.counter);
+        const decomposed = this.globalTimerService.getGlobalTimerDecomposed();
+        this.elapsedHours = decomposed.hours;
+        this.elapsedMinutes = decomposed.minutes;
+        this.elapsedSeconds = decomposed.seconds;
       });
     } else {
       clearInterval(this.timerRef);
