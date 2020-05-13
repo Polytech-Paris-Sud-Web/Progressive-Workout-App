@@ -1,5 +1,16 @@
-<div class="restTimer">
-  <app-rest-timer></app-rest-timer>
+<div id="globalTimer">
+  <app-global-timer></app-global-timer>
 </div>
 
-<button (click)="resetTimer()">Reset</button>
+<div id="currentOrNextExcercie">
+  <div id="currentOrNext">{{ labelNextOrCurrent }}</div>
+
+  <div id="labelExercice">
+    <div id="exerciceName">{{ currentExercice.name }}</div>
+    <div id="exerciceIteration">{{ currentExercice.nbOfReps }}</div>
+  </div>
+</div>
+
+<div class="restTimer" (click)="restTimerClick()">
+  <app-rest-timer></app-rest-timer>
+</div>
