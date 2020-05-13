@@ -17,11 +17,11 @@
     />
   </div>
 
-  <div class="groups" formArrayName="groups">
+  <div class="groups">
     <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
       <!-- Pour chaque groupe -->
       <ngb-panel id="custom-panel-{{ i }}" class="workoutGroup" *ngFor="let group of editWorkout.groups; let i = index">
-        <ng-container [formGroupName]="i">
+        <ng-container>
           <ng-template ngbPanelHeader let-opened="opened">
             <div>
               <div class="m-0 group-name groupeNameWorkout">{{ group.name }}</div>
@@ -48,7 +48,6 @@
                   <div class="exerciceRest">{{ exercise.restAfterExercise }}</div>
                 </div>
                 <div>
-                  <!-- <fa-icon class="iconEditExercice" [icon]="editIcon"></fa-icon> -->
                   <fa-icon class="iconDeleteExercice" [icon]="deleteIcon" (click)="deleteExercise(i, j)"></fa-icon>
                 </div>
               </div>

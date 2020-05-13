@@ -85,7 +85,6 @@ export class CreateWorkoutComponent {
   public resetForm() {
     this.workoutForm = this.fb.group({
       name: ['', Validators.required],
-      groups: this.fb.array([this.newGroup()]),
     });
   }
 
