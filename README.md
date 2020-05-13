@@ -2,8 +2,8 @@
 
 ## Participants
 
-- Thibaud Germain (`https://github.com/Grimnir777`)
-- Corentin Troadec (`https://github.com/Drainman`)
+- **Thibaud Germain** (`https://github.com/Grimnir777`)
+- **Corentin Troadec** (`https://github.com/Drainman`)
 
 ## Description
 
@@ -20,15 +20,30 @@ Essayez maintenant **ProgressiveWorkoutApp** pour profiter pleinement de toutes 
 
 ## Choix des technologies
 
-- **Angular :**
-- **SCSS :** En plus de profiter pleinement du CSS, ce format supporte l'utilisation de variable ou la définition de règles pouvant être réutilisées à plusieurs endroits dans les fichiers du projet.
-- **BootStrap :** Combiné avec un SCSS cette technologie nous permet de pouvoir construire rapidement des IHM agréables.
-- **?????? :** blablablablablablabal
+- **Angular :** Coeur de notre application, ce choix a été motivé par plusieurs aspects. Nous en avons déja un peu pratiqué, ce qui est toujours un plus, mais aussi car cette technologie offre énormément d'aide dans le développement d'application PWA. Ce framework impose également une architecture précise permettant un développement en groupe plus efficace. Le langage de base (JavaScript) est également très facile à utiliser.
+- **SCSS :** En plus de profiter pleinement du CSS, ce format supporte l'utilisation de variable ou la définition de règles pouvant être réutilisées à plusieurs endroits et dans tous fichiers ```.scss``` du projet.
+- **BootStrap :** Combiné avec du SCSS cette technologie nous permet de pouvoir construire rapidement des IHM agréables et interractif.
+- **Prettier :** CamelCase, Snake Case, Random Case. On a tous notre manière de coder, notre manière de nommer. Ce n'est jamais la même et quand on doit relire le code des autres parfois, ça nous demande un effort. Et l'indentation... on en parle ? Autant éviter de trop réfléchir et de se prendre la tête plus tard. C'est pourquoi nous avons intégré Prettier pour formatter notre code et garder la même logique tout à long de notre développement.
+- **Husky :** Dans la même logique que les choix précédents, husky permet de vérifier nombre d'éléments avant de faire un commit. Cette rapide analyse suit un standard de nommage. Si celui-ci n'est pas respecté, le commit ne peut s'effectuer et ce tant que la convention n'est pas appliquée à la lettre (littéralement!). Il lance également le *Linter* qui se charge de vérifier la concordance du code.
 
-## Build le projet :
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Build le projet
+
+**Pré-requis :** 
+- Avoir installé NodeJS (**V12+**) et la dépendance npm correspondante. 
+- Avoir de la patience (car npm... c'est lent!)
+
+1. Pour build le projet il vous faudra récupérer les sources ici présentes.
+2. Une fois dans votre projet tapez dans votre console ``npm install``.
+3. Tapez ``ng build`` afin de construire le projet.
+
+Le build sera enregistré dans le dossier ``dist/``. 
+Vous pouvez enfin rajouter dans votre commande le flag ``--prod`` pour un build de production.
 
 ## Retrouver le projet en ligne
 
-**????????**
+Une question tout à fait légitime se pose. 
+> Où puis-je donc retrouver cette incroyable application ! 
+
+C'est ici : https://progressive-workout.herokuapp.com/
+C'est gratuit, pas besoin de compte ! De suite prête à l'utilisation ! 
