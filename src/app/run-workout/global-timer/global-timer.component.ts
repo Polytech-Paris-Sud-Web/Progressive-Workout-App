@@ -15,7 +15,6 @@ export class GlobalTimerComponent implements OnInit, OnDestroy {
 
   timerRef;
   running = false;
-
   constructor(private globalTimerService: GlobalTimerService) {
     this.elapsedHours = '00';
     this.elapsedMinutes = '00';
@@ -32,7 +31,7 @@ export class GlobalTimerComponent implements OnInit, OnDestroy {
 
   startTimer() {
     this.running = !this.running;
-
+    this.globalTimerService.setIsRunning(this.running);
     if (this.running) {
       const startTime = Date.now() - (this.counter || 0);
       this.timerRef = setInterval(() => {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import moment from 'moment';
 
 @Injectable({
@@ -7,6 +7,7 @@ import moment from 'moment';
 })
 export class GlobalTimerService {
   public globalTimer: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  public isRunning: Subject<boolean> = new Subject<boolean>();
 
   public setGlobalTimer(value: number): void {
     this.globalTimer.next(value);
@@ -30,5 +31,13 @@ export class GlobalTimerService {
     let stringSeconds = stringMoment.seconds().toString();
     stringSeconds = stringSeconds.length !== 1 ? stringSeconds : '0' + stringSeconds;
     return { hours: stringHours, minutes: stringMinutes, seconds: stringSeconds };
+  }
+
+  public setIsRunning(value: boolean) {
+    this.isRunning.next(value);
+  }
+
+  public getIsRunning() {
+    return this.isRunning.asObservable();
   }
 }

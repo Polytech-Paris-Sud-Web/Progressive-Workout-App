@@ -1,6 +1,16 @@
-<div id="restTimerMainBlock" *ngIf="restTime !== 0">
-  <app-spinner [value]="restTime" [restTime]="initialValue"></app-spinner>
-</div>
-<div class="doneButton" *ngIf="restTime === 0">
+<div class="button done" *ngIf="restTime === 0">
   <div class="innerText" (click)="startRestTimer()">Done</div>
 </div>
+<ng-container *ngIf="restTime !== 0">
+  <div id="restTimerMainBlock" *ngIf="restTime !== 0">
+    <app-spinner [value]="restTime" [restTime]="initialValue"></app-spinner>
+  </div>
+  <div class="button skip" (click)="skipRest()">
+    <div>Skip</div>
+    <fa-icon [icon]="doubleRightIcon"></fa-icon>
+  </div>
+  <div class="button skip" (click)="add10sec()">
+    <div>10 more seconds</div>
+    <fa-icon [icon]="plusIcon"></fa-icon>
+  </div>
+</ng-container>
