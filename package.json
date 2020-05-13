@@ -40,6 +40,7 @@
     "bootstrap-select": "^1.13.17",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
+    "moment": "^2.25.3",
     "path": "^0.12.7",
     "prettier": "2.0.5",
     "rxjs": "~6.5.4",

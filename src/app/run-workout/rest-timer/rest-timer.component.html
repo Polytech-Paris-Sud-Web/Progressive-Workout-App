@@ -1,3 +1,6 @@
-<div id="restTimerMainBlock" style="width: 128px; height: 128px;">
+<div id="restTimerMainBlock" *ngIf="restTime !== 0">
   <app-spinner [value]="restTime" [restTime]="initialValue"></app-spinner>
+</div>
+<div class="doneButton" *ngIf="restTime === 0">
+  <div class="innerText" (click)="startRestTimer()">Done</div>
 </div>

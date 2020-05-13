@@ -1,16 +1,29 @@
-<div id="globalTimer">
-  <app-global-timer></app-global-timer>
-</div>
-
-<div id="currentOrNextExcercie">
-  <div id="currentOrNext">{{ labelNextOrCurrent }}</div>
-
-  <div id="labelExercice">
-    <div id="exerciceName">{{ currentExercice.name }}</div>
-    <div id="exerciceIteration">{{ currentExercice.nbOfReps }}</div>
+<ng-container *ngIf="exerciseRun">
+  <div id="globalTimer">
+    <app-global-timer></app-global-timer>
   </div>
-</div>
 
-<div class="restTimer" (click)="restTimerClick()">
-  <app-rest-timer></app-rest-timer>
-</div>
+  <div class="exercise" *ngIf="displayCurrent && currentExercise">
+    <div class="exerciseType">Current exercise</div>
+    <div class="exerciseLabel">
+      <div class="exerciseName">{{ currentExercise.name }}</div>
+      <div class="exerciseIteration">{{ currentExercise.nbOfReps }}</div>
+    </div>
+  </div>
+
+  <div class="exercise" *ngIf="!displayCurrent && nextExercise">
+    <div class="exerciseType">Next exercise</div>
+    <div class="exerciseLabel">
+      <div class="exerciseName">{{ nextExercise.name }}</div>
+      <div class="exerciseIteration">{{ nextExercise.nbOfReps }}</div>
+    </div>
+  </div>
+
+  <div class="restTimer">
+    <app-rest-timer
+      (restTimeEnded)="restTimeEnded()"
+      (timerStarted)="timerStarted()"
+      [exerciseRestTime]="currentRestTime"
+    ></app-rest-timer>
+  </div>
+</ng-container>
