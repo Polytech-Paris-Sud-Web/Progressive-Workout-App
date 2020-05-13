@@ -1,17 +1,29 @@
+@import '../../../styles.scss';
 #restTimerMainBlock {
-  margin: auto;
+  margin: 2rem auto;
   text-align: center;
   width: 128px;
   height: 128px;
 }
-
-.doneButton {
-  margin: 0 auto;
+.button {
+  margin: 2rem auto;
   background-color: #0ea674;
+  font-size: 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 128px;
-  width: 128px;
-  border-radius: 50%;
+  &.skip {
+    text-align: center;
+    width: 35%;
+    margin: 0.5rem auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+  }
+  &.done {
+    align-items: center;
+    justify-content: center;
+    height: 128px;
+    width: 128px;
+    border-radius: 50%;
+  }
 }

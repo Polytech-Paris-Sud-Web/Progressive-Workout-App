@@ -55,7 +55,11 @@ export class RunWorkoutComponent implements OnInit {
   }
 
   public timerStarted() {
-    this.displayCurrent = false;
+    if (this.indexExercise === this.allExercises.length - 1) {
+      this.restTimeEnded();
+    } else {
+      this.displayCurrent = false;
+    }
   }
 
   public restTimeEnded() {
