@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { WorkoutExercise } from '../models/workout-exercise';
 import Swal from 'sweetalert2';
 import { GlobalTimerService } from '../services/globalTimer/global-timer.service';
-import moment from 'moment';
 
 @Component({
   selector: 'app-run-workout',

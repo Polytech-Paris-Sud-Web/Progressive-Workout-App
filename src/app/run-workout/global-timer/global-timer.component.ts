@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GlobalTimerService } from '../../services/globalTimer/global-timer.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { GlobalTimerService } from '../../services/globalTimer/global-timer.serv
   templateUrl: './global-timer.component.html',
   styleUrls: ['./global-timer.component.scss'],
 })
-export class GlobalTimerComponent implements OnInit {
+export class GlobalTimerComponent implements OnInit, OnDestroy {
   counter: number;
 
   elapsedHours: string;
@@ -24,6 +24,10 @@ export class GlobalTimerComponent implements OnInit {
 
   public ngOnInit(): void {
     this.startTimer();
+  }
+
+  public ngOnDestroy(): void {
+    this.clearTimer();
   }
 
   startTimer() {

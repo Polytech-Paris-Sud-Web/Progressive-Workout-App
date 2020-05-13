@@ -26,11 +26,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              "src/robots.txt",
+              "src/sitemap.xml",
               "src/manifest.webmanifest"
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -93,25 +93,19 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              "src/robots.txt",
+              "src/sitemap.xml",
               "src/manifest.webmanifest"
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["tsconfig.app.json", "tsconfig.spec.json", "e2e/tsconfig.json"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -127,6 +121,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "ProgressiveWorkoutApp"
 }
