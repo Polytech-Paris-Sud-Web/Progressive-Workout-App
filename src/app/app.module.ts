@@ -10,7 +10,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CreateWorkoutComponent } from './create-workout/create-workout.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { PwaService } from './services/pwa/pwa.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { RunWorkoutComponent } from './run-workout/run-workout.component';
 import { RestTimerComponent } from './run-workout/rest-timer/rest-timer.component';
@@ -40,7 +39,7 @@ import { HomeComponent } from './home/home.component';
     SweetAlert2Module.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
-  providers: [PwaService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
