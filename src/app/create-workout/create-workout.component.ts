@@ -7,8 +7,6 @@ import { LocalDBService } from '../services/localDB/local-db.service';
 import { Workout } from '../models/workout.interface';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { groupBy } from 'rxjs/operators';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create-workout',
