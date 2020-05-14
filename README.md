@@ -66,6 +66,6 @@ Nous avons pris le temps d'analyser nos résultats Lighthouse pour en tirer les 
   - **Accessibility :** 90%
   - **Best pratices :** 100 %
   - **SEO :** 100%
-- Un seul point reste en défaut la **performance** (~50%).
+  - **Performance :** (~85%)
 
-Bootstrap semble être une de cause principale de ce défaut. Nous nous en sommes rendu compte un peu tard et nous n'avons donc pas pu corriger cet aspect. Pour autant, si le projet été à refaire nous aurions volontiers sacrifié un peu de confort, apporté par BootStrap, pour un peu plus de performance.
+Bootstrap semble être une des causes principales du léger problème de performance. Nous nous en sommes rendu compte un peu tard et nous n'avons donc pas pu corriger cet aspect. Pour autant, si le projet été à refaire nous aurions volontiers sacrifié un peu de confort, apporté par BootStrap, pour un peu plus de performance.
