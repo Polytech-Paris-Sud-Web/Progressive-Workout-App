@@ -1,14 +1,13 @@
 # ProgressiveWorkoutApp
 
 <!--ts-->
-
 - [ProgressiveWorkoutApp](#progressiveworkoutapp)
-  _ [Participants](#participants)
-  _ [Description](#description)
-  _ [Choix des technologies](#choix-des-technologies)
-  _ [Build le projet](#build-le-projet)
-  _ [Retrouver le projet en ligne](#retrouver-le-projet-en-ligne)
-  _ [Analyse Lighthouse](#analyse-lighthouse)
+  - [Participants](#participants)
+  - [Description](#description)
+  - [Choix des technologies](#choix-des-technologies)
+  - [Build le projet](#build-le-projet)
+  - [Retrouver le projet en ligne](#retrouver-le-projet-en-ligne)
+  - [Analyse Lighthouse](#analyse-lighthouse)
   <!-- Added by: kurai, at: mercredi 13 mai 2020, 22:59:15 (UTC+0200) -->
   <!--te-->
 
@@ -47,16 +46,14 @@ Essayez maintenant **ProgressiveWorkoutApp** pour profiter pleinement de toutes 
 
 1. Pour build le projet il vous faudra récupérer les sources ici présentes.
 2. Une fois dans votre projet tapez dans votre console `npm install`.
-3. Tapez `ng build` afin de construire le projet.
-
-Le build sera enregistré dans le dossier `dist/`.
-Vous pouvez enfin rajouter dans votre commande le flag `--prod` pour un build de production.
+3. Tapez `npm run build` afin de construire le projet. Le build sera enregistré dans le dossier `dist/`.
+4. Pour lancer le server de l'application entrez ensuite : `npm run start`
 
 ## Retrouver le projet en ligne
 
 Une question tout à fait légitime se pose.
 
-> Où puis-je donc retrouver cette incroyable application !
+> Où puis-je donc retrouver cette incroyable application ?
 
 C'est ici : https://progressive-workout.herokuapp.com/
 C'est gratuit, pas besoin de compte ! De suite prête à l'utilisation !
@@ -65,10 +62,10 @@ C'est gratuit, pas besoin de compte ! De suite prête à l'utilisation !
 
 Nous avons pris le temps d'analyser nos résultats Lighthouse pour en tirer les conclusions suivantes :
 
-- L'application est bonne, voir très bonne sur casiménet tous les points
+- L'application est bonne, voir très bonne sur presque tous les points
   - **Accessibility :** 90%
   - **Best pratices :** 100 %
   - **SEO :** 100%
-- Un seul point reste en défaut la \*performance\*\* (~50%).
+- Un seul point reste en défaut la **performance** (~50%).
 
 Bootstrap semble être une de cause principale de ce défaut. Nous nous en sommes rendu compte un peu tard et nous n'avons donc pas pu corriger cet aspect. Pour autant, si le projet été à refaire nous aurions volontiers sacrifié un peu de confort, apporté par BootStrap, pour un peu plus de performance.
