@@ -2,7 +2,7 @@
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
-const secure = require('express-force-https');
+const forceSsl = require('force-ssl-heroku');
 const app = express();
 
 const shouldCompress = (req, res) => {
@@ -16,7 +16,7 @@ const shouldCompress = (req, res) => {
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/ProgressiveWorkoutApp'));
-app.use(secure);
+app.use(forceSsl);
 app.use(
   compression({
     // filter decides if the response should be compressed or not,
