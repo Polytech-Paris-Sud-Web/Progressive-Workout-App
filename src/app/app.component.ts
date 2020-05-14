@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
-import { PwaService } from './services/pwa/pwa.service';
+import { Component, OnInit } from '@angular/core';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  constructor(private pwaService: PwaService) {}
-  title = 'ProgressiveWorkoutApp';
+export class AppComponent implements OnInit {
+  constructor(private swUpdate: SwUpdate) {}
+  public ngOnInit(): void {
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.available.subscribe(() => {
+        if (confirm('A new version is available : do you want to install it ?')) {
+          window.location.reload();
+        }
+      });
+    }
+  }
 }
